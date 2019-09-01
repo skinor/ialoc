@@ -1,0 +1,19 @@
+<header id="header">
+  <div class="container main-menu">
+    <div class="row align-items-center justify-content-between d-flex">
+      <div id="logo">
+        <a href="index.html"><img src="assets/img/logo.png" alt="" title=""/></a>
+      </div>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class=""><a [routerLink]="HOMEPAGE">Accueil</a></li>
+          <li><a [routerLink]="CONCEPT">Notre concept</a></li>
+          <li><a [routerLink]="PRODUCTS">Nos Chasseurs VR</a></li>
+          <li *ngIf="!isAuthenticated"><a [routerLink]="SIGN_IN" class="appao-btn">Connexion</a></li>
+          <li *ngIf="!isAuthenticated"><a [routerLink]="SIGN_UP" class="appao-btn subscribe-nav">Commencer la recherche</a></li>
+          <li *ngIf="isAuthenticated"><a [routerLink]="MY_ACCOUNT" class="appao-btn subscribe-nav">Accéder à Mon Espace</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </div>
+</header><!-- #header -->

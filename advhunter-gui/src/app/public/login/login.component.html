@@ -1,0 +1,56 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-pic js-tilt" data-tilt>
+        <img src="assets/img/img-01.png" alt="IMG">
+      </div>
+
+      <form class="login100-form validate-form">
+        <a href="{{HOMEPAGE}}" class="genric-btn info circle"><span class="fa fa-long-arrow-left"></span></a>
+
+        <span class="login100-form-title mt-4">
+						Mon espace personnel
+					</span>
+
+        <div class="wrap-input100 validate-input" [ngClass]="{'alert-validate' : isEmailNotValid }" data-validate = "Email non valide">
+          <input (click)="initBoxLogin()" class="input100" type="text" name="email" [(ngModel)]="form.email" placeholder="Email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+        </div>
+
+        <div class="wrap-input100 validate-input" [ngClass]="{'alert-validate' : isPasswordNotValid }" data-validate = "Votre mot de passe doit contenir au moins 6 lettres">
+          <input (click)="initBoxPassword()" class="input100" type="password" [(ngModel)]="form.password" name="pass" placeholder="Password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button (click)="connect()" class="login100-form-btn">
+            Je me connecte
+          </button>
+        </div>
+
+        <div *ngIf="isLoginFailed" class="badge badge-danger text-white text-center txt2 text-red p-t-12 mt-2">
+            {{errorMessage}}
+        </div>
+
+        <div class="text-center p-t-12 mt-2">
+          <a class="txt2" href="#">
+            Mot de passe oublié?
+          </a>
+        </div>
+
+        <div class="text-center p-t-136 mt-5">
+          <a class="txt2" href="/">
+            S'inscrire
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

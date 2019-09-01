@@ -1,0 +1,68 @@
+<section class="hero-area" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="hero-area-content">
+          <h1 class="text-white text-uppercase">
+            Engagez <i class="keywords">24/7</i> &nbsp;Votre propre chasseur immobilier virtuel pour votre <span
+            class="with-cutout bg-magenta">location idéale</span>
+          </h1>
+          <p class="text-white text-uppercase">
+            Epargnez votre <b class="keywords">temps</b> et vos <b class="keywords">efforts</b> de recherche et recevez
+            <b class="keywords">chaque jour</b> par &nbsp;
+            <span class="fa fa-sms fa-2x" style="color: #9e9e17"></span>&nbsp;
+            et en temps réel les <b class="keywords">dernières opportunitées</b> du marché immobilier locatif
+            soigneusement dénichées par nos supers <b class="keywords">chasseurs virtuels</b>
+          </p>
+          <h5 class="text-white mt-2">La recherche location n'a jamais été aussi facile et rapide !</h5>
+          <div class="row ml-2 mr-2 mt-2">
+            <a style="background-color: #9e9e17" class="genric-btn warning circle text-uppercase mt-1 mr-1">+ <span
+              class="counter">5000</span>&nbsp; Agences</a>
+            <a style="background-color: #9e9e17" class="genric-btn warning circle text-uppercase mt-1 mr-1">+ <span
+              class="counter">20000</span>&nbsp; Particuliers</a>
+            <a style="background-color: #9e9e17" class="genric-btn warning circle text-uppercase mt-1 mr-1">+ <span
+              class="counter">500</span>&nbsp; Annonces dénichées/sec</a>
+          </div>
+          <div *ngIf="!isAuthenticated" class="row mt-5">
+            <div class="col-sm-6">
+              <form class="">
+                <div class="wrap-input100 validate-input" [ngClass]="{'alert-validate' : isEmailNotValid }"
+                     data-validate="Email non valide">
+                  <input (click)="initBoxLogin()" class="input100" type="text" name="email" [(ngModel)]="email"
+                         placeholder="Email">
+                  <span class="focus-input100"></span>
+                  <span class="symbol-input100">
+							      <i class="fa fa-envelope" aria-hidden="true"></i>
+						      </span>
+                </div>
+              </form>
+            </div>
+
+
+            <div class="col-sm-5 offset-sm-0 offset-sx-1" style="display: inline-block;">
+              <button (click)="register()" class="login100-form-btn">
+                Engager mon chasseur &nbsp; <span
+                class="lnr lnr-arrow-right"></span>
+              </button>
+            </div>
+
+            <!--<div class="input-group">
+              <input style="background-color: white" placeholder="Indiquez votre adresse e-mail" type="text" class="form-control">
+              <div class="input-group-append">
+                <button mat-flat-button color="primary" [routerLink]="SIGN_UP">
+                  <a style="color: white; padding: 5px">Engager mon chasseur &nbsp; <span class="lnr lnr-arrow-right"></span></a>
+                </button>
+              </div>
+            </div>-->
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="hand-mockup text-lg-left text-center">
+          <img src="assets/img/banner-img.png" alt="Hand Mockup"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

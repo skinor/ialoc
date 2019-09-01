@@ -1,0 +1,242 @@
+<div class="image-container set-full-height" style="background-image: url('assets/img/home-area-registration.jpg'); background-size: cover;
+  background-attachment: fixed;">
+  <!--   Creative Tim Branding   -->
+  <a href="/accueil">
+    <div class="logo-container">
+      <div class="logo">
+        <img src="assets/paper-bootstrap-wizard-master/assets/img/new_logo.png">
+      </div>
+      <div class="brand">
+        Creative Tim
+      </div>
+    </div>
+  </a>
+
+  <!--   Big container   -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sx-8 col-sm-12 col-lg-12 col-sm-offset-2">
+
+        <!--      Wizard container        -->
+        <div class="wizard-container" >
+          <div class="card wizard-card register-card"  data-color="green" id="wizard">
+            <form action="" method="">
+              <!--        You can switch " data-color="green" "  with one of the next bright colors: "blue", "azure", "orange", "red"       -->
+
+              <div class="wizard-header">
+                <h3 class="wizard-title">List your place</h3>
+                <p class="category">This information will let us know more about your place.</p>
+              </div>
+              <div class="wizard-navigation">
+                <div class="progress-with-circle">
+                  <div aria-valuemax="4" aria-valuemin="1" aria-valuenow="1" class="progress-bar"
+                       role="progressbar" style="width: 15%;"></div>
+                </div>
+                <ul class="nav nav-pills">
+                  <li style="width: 20%;">
+                    <a data-toggle="tab" href="#typebien" class="active show">
+                      <div style="background-color: #e29342" class="icon-circle ">
+                        <i class="ti-map"></i>
+                      </div>
+                      Location
+                    </a>
+                  </li>
+                  <li style="width: 20%;">
+                    <a>
+                      <div class="icon-circle checked">
+                        <i class="ti-map"></i>
+                      </div>
+                      Intérieur
+                    </a>
+                  </li>
+                  <li style="width: 20%;">
+                    <a>
+                      <div class="icon-circle">
+                        <i class="ti-direction-alt"></i>
+                      </div>
+                      Secteur
+                    </a>
+                  </li>
+                  <li style="width: 20%;">
+                    <a>
+                      <div class="icon-circle">
+                        <i class="ti-panel"></i>
+                      </div>
+                      Contact
+                    </a>
+                  </li>
+                  <li style="width: 20%;">
+                    <a>
+                      <div class="icon-circle">
+                        <i class="ti-comments"></i>
+                      </div>
+                      Mon chasseur
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content">
+                <div class="tab-pane active show mt-5" id="typebien">
+                  <h4>Vous recherchez : {{activeHomeLabel}}</h4>
+                  <div class="d-flex flex-column bd-highlight mb-3">
+
+                    <div class="container budget mt-3 p-2 bd-highlight">
+
+                      <div class="row">
+                        <div class="col-sm-4">
+                          <mat-card>
+                            <h6 class="text-uppercase">Budget</h6>
+                            <div class="mb-2 mt-2">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Loyer maximum cc* </mat-label>
+                                <input matInput placeholder="" [formControl]="priceFormControl" autocomplete="off">
+                                <mat-icon class="matIconSuffix" matSuffix>euro</mat-icon>
+                                <mat-hint>*Charges comprises</mat-hint>
+                                <mat-error *ngIf="priceFormControl.hasError('required')">
+                                  Ce champ est <strong>obligatoire</strong>
+                                </mat-error>
+                                <mat-error *ngIf="priceFormControl.hasError('pattern') && !priceFormControl.hasError('required')">
+                                  Veuillez saisir un <strong>nombre entier</strong>
+                                </mat-error>
+                                <mat-error *ngIf="priceFormControl.hasError('min') && !priceFormControl.hasError('required') && !priceFormControl.hasError('pattern')">
+                                  Loyer <strong>très bas</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-card>
+                        </div>
+
+                        <div class="col-sm-4 col-sx-offset-2">
+                          <mat-card>
+                            <h6 class="text-uppercase">Surface habitable</h6>
+                            <div class="mb-2 mt-2">
+                              <mat-form-field appearance="outline">
+                                <mat-label>Surface minimum*</mat-label>
+                                <input matInput placeholder=""  [formControl]="surfaceFormControl" autocomplete="off">
+                                <span matSuffix>m<sup>2</sup></span>
+                                <mat-hint>*Loi carrez</mat-hint>
+                                <mat-error *ngIf="surfaceFormControl.hasError('required')">
+                                  Ce champ est <strong>obligatoire</strong>
+                                </mat-error>
+                                <mat-error *ngIf="surfaceFormControl.hasError('pattern') && !surfaceFormControl.hasError('required')">
+                                  Veuillez saisir un <strong>nombre entier</strong>
+                                </mat-error>
+                                <mat-error *ngIf="surfaceFormControl.hasError('min') && !surfaceFormControl.hasError('required') && !surfaceFormControl.hasError('pattern')">
+                                  Cette surface est <strong>très basse pour votre type de logement</strong>
+                                </mat-error>
+                                <mat-error *ngIf="surfaceFormControl.hasError('max') && !surfaceFormControl.hasError('min') && !surfaceFormControl.hasError('required') && !surfaceFormControl.hasError('pattern')">
+                                  Cette surface est <strong>très grande pour votre type de logement</strong>
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                          </mat-card>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div [hidden]="nbPiecesHidden" class="container piecesAppt mt-3 p-2 bd-highlight">
+
+                      <h6 class="text-uppercase">Nombre de pièces</h6>
+                      <ul class="piecesType">
+                        <li *ngFor="let piece of selectedPieces" [ngClass]="{'is-checked' : piece.isChecked}" (click)="select(piece)" class="checkboxe {{piece.type}}"></li>
+                      </ul>
+
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="container meublelist mt-3 p-2 bd-highlight">
+                      <h6 class="text-uppercase">Location meublée</h6>
+                      <ul class="envies">
+                        <li *ngFor="let meuble of selectedMeuble">
+                          <a>
+                            <div (click)="select(meuble)" [ngClass]="{'is-checked' : meuble.isChecked}" class="checkboxe {{meuble.type}}"></div>
+                            <span [ngStyle]="{'font-weight' : meuble.isChecked ? 'bold' : 'normal'}">{{meuble.formatedType}}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="container envieslist mt-3 p-2 bd-highlight">
+                      <h6 class="text-uppercase">Vos envies</h6>
+                      <ul class="envies">
+                        <li *ngFor="let envie of selectedType">
+                          <a>
+                            <div [ngClass]="{'is-checked' : envie.isChecked}" (click)="select(envie)" class="checkboxe {{envie.type}}"></div>
+                            <span [ngStyle]="{'font-weight' : envie.isChecked ? 'bold' : 'normal'}">{{envie.formatedType}}</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="commodity p-2 bd-highlight mt-3">
+                      <h6 class="text-uppercase">Commodités</h6>
+                      <ul class="ks-cboxtags">
+                        <li *ngFor="let commodity of selectedCommodities"><input type="checkbox" (click)="select(commodity)" [checked]="commodity.isChecked" id="{{commodity.type}}"><label for="{{commodity.type}}">{{commodity.formatedType}}</label></li>
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="others p-2 bd-highlight mt-1">
+                      <h6 class="text-uppercase">Autres pièces</h6>
+                      <ul class="ks-cboxtags">
+                        <li *ngFor="let pieceDesc of selectedOtherPieces"><input type="checkbox" (click)="select(pieceDesc)" [checked]="pieceDesc.isChecked" id="{{pieceDesc.type}}"><label for="{{pieceDesc.type}}">{{pieceDesc.formatedType}}</label></li>
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="kitchen p-2 bd-highlight mt-1">
+                      <h6 class="text-uppercase">Cuisine</h6>
+                      <ul class="ks-cboxtags">
+                        <li *ngFor="let cuisineType of selectedCusine"><input type="checkbox" (click)="select(cuisineType)" [checked]="cuisineType.isChecked" id="{{cuisineType.type}}"><label for="{{cuisineType.type}}">{{cuisineType.formatedType}}</label></li>
+
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="chauffage p-2 bd-highlight mt-1">
+                      <h6 class="text-uppercase">Chauffage</h6>
+                      <ul class="ks-cboxtags">
+                        <li *ngFor="let chauffageType of selectedChauffage"><input type="checkbox" (click)="select(chauffageType)" [checked]="chauffageType.isChecked" id="{{chauffageType.type}}"><label for="{{chauffageType.type}}">{{chauffageType.formatedType}}</label></li>
+
+                      </ul>
+                    </div>
+
+                    <mat-divider></mat-divider>
+
+                    <div class="orientation p-2 bd-highlight mt-1">
+                      <h6 class="text-uppercase">Orientation</h6>
+                      <ul class="ks-cboxtags">
+                        <li *ngFor="let orientationType of selectedOrientation"><input type="checkbox" (click)="select(orientationType)"  [checked]="orientationType.isChecked" id="{{orientationType.type}}"><label for="{{orientationType.type}}">{{orientationType.formatedType}}</label></li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wizard-footer">
+                <div class="pull-right">
+                  <input [disabled]="!priceFormControl.valid || !surfaceFormControl.valid" (click)="next()" type='button' class='btn btn-fill btn-danger btn-wd' name='next' value='Suivant' />
+                </div>
+                <div class="pull-left">
+                  <input (click)="previous()" type='button' class='btn btn-default btn-wd' name='previous' value='Précedant' />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div> <!-- wizard container -->
+      </div>
+    </div> <!-- row -->
+  </div> <!--  big container -->
+</div>
